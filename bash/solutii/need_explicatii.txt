@@ -1,0 +1,55 @@
+Hello!
+
+Tuxy a inceput sa creada ca sistemul de operare nu este de acord cu el. Are
+dovezi ca anumite bucati de cod nu fac ceea ce vrea sa faca.
+
+Probleme:
+
+1:    $ a=0; true && ((a++)) || ((a--)); echo "a este $a"
+    a este 0
+    # Rezultatul asteptat de Tuxy este: "a este 1"
+    # Scrieti aici de ce terminalul face ceea ce trebuie.
+    # terminalul executa toate comenzile nu se operste din verificarea 
+    # conditiilor doar daca prima instructiune dinainte de sau este adevarata
+    # ca in C. Astfel a devine 1 si apoi din nou 0.
+
+
+
+2:    $ file="I Am the average rocket scientist"
+      $ sursa="/home/tuxy/Music/$file"
+      $ destinatie="/home/tuxy/NewMusic"
+      $ cp $sursa $destinatie
+    error: I was not found 
+    # Rezultatul expresiei asteptat de Tuxy este: ""
+
+    # Numele fisierului nu este corect. Fiind separat prin spatiu si pus
+    # simplu intre ghilimele el ia primul cuvant si afiseaza eroarea
+    # I not found
+
+3:    $ [ $foo = "bar" ]; echo $foo 
+    Error: unary operator expected
+    
+    # Rezultatul asteptat de Tuxy este: "bar"
+
+    # Expresia afisa rezultatul asteptat daca nu era pusa intre paranteze
+    # patrate, iar inainte si dupa = nu existatu spatii.
+
+4:    $ ./incercare.sh
+      0
+    # Rezultatul asteptat al scriptului: "1"
+   
+    # Scriptul afiseaza exit-code-ul ultimei operatii adica 0. Ultima operatie
+    # este executata intodeauna fiind vorba de atribuirea unei variabile locale.
+    # In plus rm -rf are deasemenea exit-code-ul 0 executandu-se indiferent de
+    # existenta folderului/fisierului primit ca parametru, exceptand cauzul de
+    # la punctul 5.
+
+5:    $ ./incercare5.sh
+     rm: it is dangerous to operate recursively on ‘/’
+     rm: use --no-preserve-root to override this failsafe 
+    # Rezultatul asteptat al scriptului este: ""
+   
+    # comanda respectiva doreste stergerea recursiva a folderului in care
+    # isi are radacina sistemul de operare. Eroarea apare ca un ultimatum 
+    # pentru a reaminti odata in plus ce se intampla la executarea ei.
+
